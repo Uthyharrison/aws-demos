@@ -110,13 +110,15 @@
                     body: JSON.stringify(data)
                 });
 
-                const result = await response.text();
+                const result = await response.json();
 
-                if (response.ok) {
-                    alert('Registration successful!');
-                    registerForm.reset();
-                } else {
-                    alert('Error registering student: ' + result);
+if (response.ok) {
+    alert('Registration successful!');
+    registerForm.reset();
+} else {
+    alert('Error registering student: ' + (result.message || 'Unknown error'));
+}
+
                 }
             } catch (err) {
                 alert('Failed to register. Network or API issue.');
